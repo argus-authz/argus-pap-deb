@@ -1,0 +1,54 @@
+#!/bin/sh
+# postinst script for argus-pap
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+
+case "$1" in
+    configure)
+        # fix permissions
+        chmod -f 640 /etc/argus/pap/pap_configuration.ini
+        chmod -f 640 /etc/argus/pap/pap_authorization.ini
+        chmod -f 750 /usr/share/argus/pap/sbin/papctl
+        chmod -f 750 /var/log/argus/pap
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+# register the service
+if [ -x "/etc/init.d/argus-pap" ]; then
+    update-rc.d argus-pap defaults >/dev/null
+fi
+
+# start the service on upgrade, install(config-files), downgrade
+# in these cases postinst is called 'postinst configure <version>', and we check
+# if <version> exists
+if [ -n "$2" ]; then
+    if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+        invoke-rc.d argus-pap start || exit $?
+    else
+        /etc/init.d/argus-pap start || exit $?
+    fi
+fi
+exit 0

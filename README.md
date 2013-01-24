@@ -1,4 +1,2 @@
-argus-pap-deb
-=============
-
-Debian packaging code for the Argus PAP
+# Argus PAP Debian packaging 
+Debian packaging for the Argus PAP

@@ -1,0 +1,33 @@
+--- a/src/main/assembly/argus-pap.xml
++++ b/src/main/assembly/argus-pap.xml
+@@ -123,7 +123,7 @@
+     <file>
+     	<source>${basedir}/src/main/bash/pap-sysconfig.sh</source>
+     	<destName>argus-pap</destName>
+-    	<outputDirectory>/etc/sysconfig</outputDirectory>
++    	<outputDirectory>/etc/default</outputDirectory>
+     	<filtered>true</filtered>
+     </file>
+     <file>
+--- a/src/main/bash/pap-admin.sh
++++ b/src/main/bash/pap-admin.sh
+@@ -34,7 +34,7 @@
+ # Get standard environment variables
+ PRGDIR=`dirname "$PRG"`
+ 
+-PAP_DEFAULTS="/etc/sysconfig/argus-pap"
++PAP_DEFAULTS="/etc/default/argus-pap"
+ 
+ if [ -r $PAP_DEFAULTS ]; then
+ 	source $PAP_DEFAULTS
+--- a/src/main/bash/papctl.sh
++++ b/src/main/bash/papctl.sh
+@@ -20,7 +20,7 @@
+ 
+ prog="$(basename $0)"
+ 
+-PAP_DEFAULTS=/etc/sysconfig/argus-pap
++PAP_DEFAULTS=/etc/default/argus-pap
+ 
+ if [ -r $PAP_DEFAULTS ]; then
+ 	source $PAP_DEFAULTS
