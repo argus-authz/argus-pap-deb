@@ -1,5 +1,5 @@
 argus-pap (@@DEB_VERSION@@) unstable; urgency=low
 
-  * Initial release for Debian (Closes: #nnnn)
+  * Fix for https://savannah.cern.ch/bugs/index.php?101151
 
- -- Andrea Ceccanti <andrea.ceccanti@cnaf.infn.it>  Thu, 21 Nov 2012 12:00:00 +0200
+ -- Andrea Ceccanti <andrea.ceccanti@cnaf.infn.it>  Thu, 11 Apr 2013 12:00:00 +0200
