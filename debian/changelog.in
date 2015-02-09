@@ -1,5 +1,5 @@
 argus-pap (@@DEB_VERSION@@) unstable; urgency=low
 
-  * Fix for https://savannah.cern.ch/bugs/index.php?101151
+  * Bumped packaging to 1.6.2
 
- -- Andrea Ceccanti <andrea.ceccanti@cnaf.infn.it>  Thu, 11 Apr 2013 12:00:00 +0200
+ -- Andrea Ceccanti <andrea.ceccanti@cnaf.infn.it>  Mon, 9 Feb 2015 12:00:00 +0200
